@@ -1,0 +1,195 @@
+/* CONSTANTES */
+/* cor de fundo */
+@background-color: #8FAFBA;
+@background-shadow: @background-color - #444;
+
+/* quantidade do radius */
+@radius: 10px;
+
+/* cor da parte interna do site */
+@corpadrao: #DEEDF2;
+@corpadrao-escuro: @corpadrao - #222;
+@corpadrao-claro: @corpadrao + #222;
+@corpadrao-hover: #316AC5;
+@corpadrao-select: @corpadrao-hover;
+
+/* cors dos inputs */
+@inputs: #FFF;
+
+/* quantidade de menus */
+@menus: 5;
+
+/* FUNÇõES */
+.border-radius(@params) {
+	-moz-border-radius: @params;
+	-webkit-border-radius: @params;
+	border-radius: @params;
+}
+
+.box-shadow(@params) {
+	-moz-box-shadow: @params;
+	-webkit-box-shadow: @params;
+	box-shadow: @params;
+}
+
+.no-select {
+	user-select: none;
+	-ms-user-select: none;
+	-moz-user-select: none;
+	-webkit-user-select: none;
+}
+
+.display-inline-block {
+	display: -webkit-inline-block;
+	display: -moz-inline-block;
+	display: inline-block;
+	*display: inline; zoom: 1;
+}
+
+/* CLASSES */
+.broke-ul {
+	display: block;
+	list-style-type: none;
+	margin-before: 0;
+	-moz-margin-before: 0;
+	-webkit-margin-before: 0;
+	margin-after: 0;
+	-moz-margin-after: 0;
+	-webkit-margin-after: 0;
+	margin-start: 0px;
+	-moz-margin-start: 0px;
+	-webkit-margin-start: 0px;
+	margin-end: 0px;
+	-moz-margin-end: 0px;
+	-webkit-margin-end: 0px;
+	padding-start: 0px;
+	-moz-padding-start: 0px;
+	-webkit-padding-start: 0px;
+}
+
+/* ELEMENTOS */
+body {
+	background-color: @background-color;
+	background-image: url("../img/gradient.jpg");
+	background-repeat: repeat-x;
+	margin: 0px;
+}
+
+button, input[type="submit"], input[input="button"], .button {
+	.display-inline-block;
+	.border-radius(3px);
+	.no-select;
+	background-color: #FFF;
+	border: 1px solid #000;
+	cursor: pointer;
+	padding: 2px 5px;
+	font-family: arial;
+	font-size: 13px;
+	color: #000;
+	
+	&:hover {
+	}
+	
+	&:active {
+	}
+}
+
+input[type="text"], input[type="password"], input[type="uint"], input[type="int"], input[type="ufloat"], input[type="float"] {
+	.border-radius(3px);
+	background-color: #FFF;
+	border: 1px solid #000;
+}
+
+/* IDS */
+#login-form {
+	width: 190px;
+	float: right;
+	margin: 15px 10px 10px 10px;
+}
+
+/* ESQUELETO */
+#container {
+	width: 960px;
+	display: block;
+	margin: 10px auto;
+	.border-radius(@radius);
+	.box-shadow(0px 0px 45px @background-shadow);
+	
+	.line {
+		width: 960px;
+		background-color: @corpadrao;
+		border-top: 1px solid @corpadrao-claro;
+		border-bottom: 1px solid @corpadrao-escuro;
+		
+		&.header {
+			.border-radius(@radius @radius 0px 0px);
+			background-image: url("../img/artwork.png");
+			height: 125px;
+			border-top: none;
+		}
+		
+		&.menu {
+			ul {
+				.broke-ul;
+				.display-inline-block;
+				margin: 0 auto;
+				width: @menus * 120px + 30;
+				li {
+					display: inline-block;
+					width: 120px;
+					cursor: pointer;
+					font-family: arial;
+					text-align: center;
+				}
+			}
+		}
+		
+		&.body {
+			table {
+				display: block;
+				margin: 10px auto;
+				tr {
+					&:nth-child(odd) {
+					}
+					
+					&:nth-child(even) {
+						background: @corpadrao-escuro + #111;
+					}
+					
+					&:hover {
+						background-color: @corpadrao-hover;
+						cursor: pointer;
+					}
+					
+					th {
+						text-align: left;
+						background-color: @corpadrao-escuro;
+					}
+					
+					td {
+						img {
+							width: 16px;
+							height: 16px;
+							display: block;
+							margin: 0 auto;
+						}
+					}
+				}
+			}
+		}
+		
+		&.banner {
+			height: 100px;
+			img {
+				display: block;
+				margin: 5px auto;
+			}
+		}
+		
+		&.footer {
+			.border-radius(0px 0px @radius @radius);
+			border-bottom: none;
+			height: 30px;
+		}
+	}
+}
